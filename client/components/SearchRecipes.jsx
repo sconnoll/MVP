@@ -33,7 +33,7 @@ class SearchRecipes extends React.Component {
       .then((results) => {
         this.setState({
           recipes: results.data.hits
-        })
+        }, () => console.log(this.state.recipes))
       })
       .catch(err => console.error(err));
   }
@@ -50,12 +50,13 @@ class SearchRecipes extends React.Component {
     }, () => console.log(this.state.filters))
   }
 
-  toggleModal(e) {
+  toggleModal(e, recipe = null) {
     let tempModal = this.state.showModal;
+    console.log('this should be current recipe', recipe)
     if (e !==undefined) {
       this.setState({
         showModal: !tempModal, 
-        currentRecipe: e.target.value
+        currentRecipe: recipe
       })
     } else {
     this.setState({
@@ -91,7 +92,7 @@ class SearchRecipes extends React.Component {
           {this.state.recipes.length > 0 ? 
             <ul>
               {this.state.recipes.map((item, i) => {
-                return <li key={i} value={item} onClick={e => this.toggleModal(e)}>
+                return <li key={i} value={item.recipe} onClick={(e, recipe) => this.toggleModal(e, item.recipe)}>
                   <img src={item.recipe.image} width='60px' height='60px'/>
                   <a>{item.recipe.label}</a>
                 </li>
