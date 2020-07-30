@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getRecipes } from '../../api/helpers';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import RecipeModal from './RecipeModal';
 
 class SearchRecipes extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class SearchRecipes extends React.Component {
       recipes: [],
       search: '',
       filters: [],
-      showModal: false
+      showModal: false, 
+      currentRecipe: null
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -47,9 +49,10 @@ class SearchRecipes extends React.Component {
     }, () => console.log(this.state.filters))
   }
 
-  toggleModal() {
+  toggleModal(e) {
     this.setState({
-      showModal: !this.state.showModal
+      showModal: !this.state.showModal,
+      currentRecipe: e.target.value
     })
   }
 
@@ -80,13 +83,14 @@ class SearchRecipes extends React.Component {
           {this.state.recipes.length > 0 ? 
             <ul>
               {this.state.recipes.map((item, i) => {
-                return <li key={i} onClick={this.toggleModal}>
+                return <li key={i} value={item} onClick={e => this.toggleModal(e)}>
                   <img src={item.recipe.image} width='60px' height='60px'/>
                   <a>{item.recipe.label}</a>
                 </li>
               })}
             </ul>
           : null}
+          {this.state.showModal === true ? <RecipeModal show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
         </div> 
       </div>
     );
