@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { getRecipes } from '../../api/helpers';
 import Form from 'react-bootstrap/Form';
 import RecipeModal from './RecipeModal';
@@ -51,7 +50,6 @@ class SearchRecipes extends React.Component {
 
   toggleModal(e, recipe = null) {
     let tempModal = this.state.showModal;
-    console.log('this should be current recipe', recipe)
     if (e !==undefined) {
       this.setState({
         showModal: !tempModal, 
@@ -69,7 +67,7 @@ class SearchRecipes extends React.Component {
       <div className='search-container'>
         <Form>
           <Form.Group controlId="formSearch">
-            <Form.Control id='search-bar' type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
+            <Form.Control className='search-bar' type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
             <button id='search-button' onClick={e => this.handleClick(e)}>Search</button>
             <br/>
             {['balanced', 'high-protein', 'low-fat', 'low-carb', 'sugar-conscious', 'tree-nut-free', 'alcohol-free', 'peanut-free', 'vegan', 'vegetarian'].map(type => {
@@ -87,10 +85,6 @@ class SearchRecipes extends React.Component {
           {this.state.recipes.length > 0 ? 
               this.state.recipes.map((item, i) => {
                 return <RecipeItem recipe={item.recipe} onClick={this.toggleModal}/> 
-                // <li key={i} value={item.recipe} onClick={(e, recipe) => this.toggleModal(e, item.recipe)}>
-                //   <img src={item.recipe.image} width='60px' height='60px'/>
-                //   <a>{item.recipe.label}</a>
-                // </li>
               })
           : null}
         </div> 

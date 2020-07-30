@@ -32,7 +32,7 @@ class RecipeModal extends React.Component {
           Dietary Restrictions: <ul>{this.props.recipe.healthLabels.map((label, i) => {
             return <li key={i}>{label}</li>
           })}</ul>
-          <button><a className='instructions-text' href={this.props.recipe.url}>Instructions</a></button>
+          <button><a className='instructions-text' href={this.props.recipe.url} target='blank'>Instructions</a></button>
         </Modal.Body>
         <Modal.Footer>
           <button onClick={(e, recipe) => this.handleClick(e, this.props.recipe)}>

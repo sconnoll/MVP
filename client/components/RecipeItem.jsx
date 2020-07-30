@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 
 const RecipeItem = ({ recipe, onClick }) => {
   return (
-    
     <Card style={{ width: '18rem' }} >
       <Card.Img variant="top" src={recipe.image} />
       <Card.Body>
@@ -12,6 +11,7 @@ const RecipeItem = ({ recipe, onClick }) => {
           Recipe serves {recipe.yield}
         </Card.Text>
         <button value={recipe} onClick={(e, value) => onClick(e, recipe)}>Ingredients</button>
+        <button><a className='instructions-text' href={recipe.url} target='blank'>View Full Recipe</a></button>
       </Card.Body>
     </Card>
   );

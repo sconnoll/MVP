@@ -5,7 +5,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   color: #525252;
-  width: 780px;
+  width: auto;
   margin: 20px;
 }
 
@@ -31,34 +31,58 @@ button {
 
 .nav{
   grid-area: a;
+  display: grid;
+  grid-template-columns: 7;
   align-self: start;
-  height: 30px;
+  height: 50px;
   background-color: #525252;
-  align-items: center;
-  justify-items: end;
+  /* justify-items: end;
+  align-items: center; */
+  margin-bottom: 30px;
 }
 
-a{
+a, a:hover{
   text-decoration: none;
 }
 
-.nav-bar > a >text {
+.nav > .nav-bar {
+  grid-column: 7;
+  align-self: center;
+  justify-content: center; 
+}
+
+.nav > .logo {
+  grid-column: 1;
+  font-size: 28px;
+  text-transform: uppercase;
+  color: white;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.nav > .nav-bar >text {
   color: white;
   padding: 0px 10px;
 }
 
-.nav-bar > a > text:hover {
+.nav > .nav-bar > text:hover {
   color: lightgray;
+  cursor: pointer;
 }
 
 .search-container {
   grid-area: b;
 }
 
-#search-bar{
+.search-bar{
   display: inline-block;
-  width: 600px;
+  width: 500px;
   padding-right: 60px;
+  background-color: white;
+}
+
+#formSearch{
+  background-color: white;
 }
 
 #search-button{
@@ -68,6 +92,9 @@ a{
 .recipe-list-container {
   height: 100%;
   grid-area: c;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
 ul {
