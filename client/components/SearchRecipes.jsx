@@ -50,8 +50,11 @@ class SearchRecipes extends React.Component {
   }
 
   toggleModal(e) {
+    let tempModal = this.state.showModal;
+    let tempRecipe = this.state.currentRecipe;
+    if (tempRecipe !== null) 
     this.setState({
-      showModal: !this.state.showModal,
+      showModal: !tempModal,
       currentRecipe: e.target.value
     })
   }
@@ -90,7 +93,7 @@ class SearchRecipes extends React.Component {
               })}
             </ul>
           : null}
-          {this.state.showModal === true ? <RecipeModal show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
+          {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
         </div> 
       </div>
     );
