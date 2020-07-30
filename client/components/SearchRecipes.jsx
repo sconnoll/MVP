@@ -52,7 +52,6 @@ class SearchRecipes extends React.Component {
   toggleModal(e) {
     let tempModal = this.state.showModal;
     let tempRecipe = this.state.currentRecipe;
-    if (tempRecipe !== null) 
     this.setState({
       showModal: !tempModal,
       currentRecipe: e.target.value
