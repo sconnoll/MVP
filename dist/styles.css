@@ -38,6 +38,9 @@ button {
   justify-items: end;
 }
 
+a{
+  text-decoration: none;
+}
 
 .nav-bar > a >text {
   color: white;
@@ -87,3 +90,6 @@ label.dietary-restriction-label{
   font-size: 14px;
 }
 
+a.instructions-text {
+  color: #525252;
+}
