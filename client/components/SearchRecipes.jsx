@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getRecipes } from '../../api/helpers';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal'; 
 import RecipeModal from './RecipeModal';
 
 class SearchRecipes extends React.Component {
@@ -51,11 +52,16 @@ class SearchRecipes extends React.Component {
 
   toggleModal(e) {
     let tempModal = this.state.showModal;
-    let tempRecipe = this.state.currentRecipe;
+    if (e !==undefined) {
+      this.setState({
+        showModal: !tempModal, 
+        currentRecipe: e.target.value
+      })
+    } else {
     this.setState({
-      showModal: !tempModal,
-      currentRecipe: e.target.value
+      showModal: !tempModal
     })
+  }
   }
 
   render() {
@@ -81,7 +87,7 @@ class SearchRecipes extends React.Component {
         
           <Button onClick={e => this.handleClick(e)}>Search</Button>
         </Form>
-        <div>
+        <div className='recipe-list'>
           {this.state.recipes.length > 0 ? 
             <ul>
               {this.state.recipes.map((item, i) => {
@@ -92,8 +98,8 @@ class SearchRecipes extends React.Component {
               })}
             </ul>
           : null}
-          {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
         </div> 
+        {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
       </div>
     );
   }

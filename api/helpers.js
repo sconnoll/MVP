@@ -7,7 +7,6 @@ module.exports = {
   //   return axios.get(unsplashUrl);
   // },
   getRecipes: function (searchTerm) {
-    console.log("getting here");
     // console.log(...filters.length);
     // if (filters) {
     //   return axios.get(

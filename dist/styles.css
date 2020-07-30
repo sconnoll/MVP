@@ -1,3 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #525252;
+  width: 1200px;
+  margin: auto;
+}
+
+.recipe-list {
+  height: 100%;
+  border: 1px black sol
+}
+
 ul {
   list-style-type: none;
 }
