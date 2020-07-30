@@ -7,9 +7,14 @@ module.exports = {
   //   return axios.get(unsplashUrl);
   // },
   getRecipes: function (searchTerm) {
-    console.log("getting here");
+    // console.log(...filters.length);
+    // if (filters) {
+    //   return axios.get(
+    //     `https://api.edamam.com/search?q=${searchTerm}&app_id=${EDAMAM_APP_ID}&app_key=${EDAMAM_APP_KEY}&from=0&to=30&health=${filters}`
+    //   );
+    // }
     return axios.get(
-      `https://api.edamam.com/search?q=${searchTerm}&app_id=${EDAMAM_APP_ID}&app_key=${EDAMAM_APP_KEY}`
+      `https://api.edamam.com/search?q=${searchTerm}&app_id=${EDAMAM_APP_ID}&app_key=${EDAMAM_APP_KEY}&from=0&to=30`
     );
   },
 };
