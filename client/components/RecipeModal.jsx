@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Ingredients from './Ingredients';
 
 const RecipeModal = ({ recipe, show, handleClose }) => {
