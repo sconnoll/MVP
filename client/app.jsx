@@ -11,12 +11,15 @@ class App extends React.Component {
   }
 
   render() {
-    // getRecipes()
-    //   .then((recipes) => console.log(recipes))
-    //   .catch((e) => console.log(e));
     return (
-      <div>
-        <div></div>
+      <div className='app-container'>
+        <div className='nav'>
+          <span className='nav-bar'>
+            <a href='home'><text>Home</text></a>
+            <a href='favorites'><text>Favorites</text></a>
+
+          </span>
+        </div>
         <SearchRecipes />
       </div>
     );

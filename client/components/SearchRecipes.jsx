@@ -2,9 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { getRecipes } from '../../api/helpers';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal'; 
 import RecipeModal from './RecipeModal';
+import RecipeItem from './RecipeItem';
 
 class SearchRecipes extends React.Component {
   constructor(props) {
@@ -67,37 +66,32 @@ class SearchRecipes extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='search-container'>
         <Form>
           <Form.Group controlId="formSearch">
-            <Form.Control type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
-          </Form.Group>
-          <Form.Group controlId='diet'>
-            <Form.Label>Dietary Restrictions</Form.Label>
+            <Form.Control id='search-bar' type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
+            <button id='search-button' onClick={e => this.handleClick(e)}>Search</button>
+            <br/>
             {['balanced', 'high-protein', 'low-fat', 'low-carb', 'sugar-conscious', 'tree-nut-free', 'alcohol-free', 'peanut-free', 'vegan', 'vegetarian'].map(type => {
-              return <Form.Check
-                custom
-                label={type}
+              return <span className='dietary-restriction-option'><input type='checkbox'
                 id={type}
                 name={type}
                 value={type}
                 onChange={this.handleChange}
-              />
+              /><label className='dietary-restriction-label'>{type}</label></span>
             })}
           </Form.Group>
         
-          <Button onClick={e => this.handleClick(e)}>Search</Button>
         </Form>
-        <div className='recipe-list'>
+        <div className='recipe-list-container'>
           {this.state.recipes.length > 0 ? 
-            <ul>
-              {this.state.recipes.map((item, i) => {
-                return <li key={i} value={item.recipe} onClick={(e, recipe) => this.toggleModal(e, item.recipe)}>
-                  <img src={item.recipe.image} width='60px' height='60px'/>
-                  <a>{item.recipe.label}</a>
-                </li>
-              })}
-            </ul>
+              this.state.recipes.map((item, i) => {
+                return <RecipeItem recipe={item.recipe} onClick={this.toggleModal}/> 
+                // <li key={i} value={item.recipe} onClick={(e, recipe) => this.toggleModal(e, item.recipe)}>
+                //   <img src={item.recipe.image} width='60px' height='60px'/>
+                //   <a>{item.recipe.label}</a>
+                // </li>
+              })
           : null}
         </div> 
         {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
