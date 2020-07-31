@@ -5,6 +5,7 @@ const path = require("path");
 const bodyParser = require("body-parser").json();
 const router = require("./routes");
 const morgan = require("morgan");
+const cors = require("cors");
 
 app.use(express.static("dist"));
 app.use(bodyParser);
@@ -14,6 +15,8 @@ app.use("/", router);
 
 if (process.env.NODE_ENV === "production") {
 }
+
+app.use(cors());
 
 app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
