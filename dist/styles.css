@@ -120,3 +120,11 @@ label.dietary-restriction-label{
 a.instructions-text {
   color: #525252;
 }
+
+.card{
+  font-size: 14px;
+}
+
+.all-caps{
+  text-transform: uppercase;
+}

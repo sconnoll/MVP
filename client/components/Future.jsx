@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import RecipeItem from './RecipeItem';
 
-class Favorites extends React.Component {
+class Future extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,11 +19,11 @@ class Favorites extends React.Component {
   }
   
   componentDidMount() {
-    axios.get('/cookbook/favorite') 
+    axios.get('/cookbook', {params: {category: 'future'}}) 
       .then(({ data }) => {
         this.setState({
           recipes: data
-        }, () => console.log(this.state.recipes))
+        })
       })
       .catch(err => console.error(err));
   }
@@ -66,7 +66,7 @@ class Favorites extends React.Component {
   render() {
     return (
       <div className='search-container'>
-        <h3>'Tried and True' Recipes</h3>
+        <h3>'Need to Try' Recipes</h3>
         {/* <Form>
           <Form.Group controlId="formSearch">
             <Form.Control className='search-bar' type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
@@ -79,7 +79,7 @@ class Favorites extends React.Component {
               this.state.recipes.map((item, i) => {
                 return <RecipeItem recipe={item} onClick={this.toggleModal}/> 
               })
-          : <span>You have no favorite recipes</span>}
+          : <span>Explore delicious recipes!</span>}
         </div> 
         {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
       </div>
@@ -87,4 +87,4 @@ class Favorites extends React.Component {
   }
 }
 
-export default Favorites;
+export default Future;

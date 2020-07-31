@@ -12,13 +12,14 @@ db.once("open", function () {
 
 const recipeSchema = new mongoose.Schema({
   id: Number,
+  category: String,
   dietLabels: Array,
   healthLabels: Array,
   image: String,
   ingredientLines: Array,
   label: String,
   url: String,
-  createdAt: { type: Date, default: Date.now },
+  created_at: { type: Date, default: Date.now },
 });
 
 const Recipe = mongoose.model("Recipe", recipeSchema);

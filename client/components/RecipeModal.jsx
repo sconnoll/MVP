@@ -10,9 +10,9 @@ class RecipeModal extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event, recipe) {
+  handleClick(event, recipe, category) {
     const { dietLabels, healthLabels, image, ingredientLines, label, url } = recipe
-    axios.post('/cookbook', {dietLabels, healthLabels, image, ingredientLines, label, url})
+    axios.post('/cookbook', {category, dietLabels, healthLabels, image, ingredientLines, label, url})
       .then(result => {
         console.log('completed');
       })
@@ -20,6 +20,7 @@ class RecipeModal extends React.Component {
   };
 
   render() {
+    console.log(this.props.recipe);
     return (
       <Modal show={this.props.show} onHide={e => this.props.handleClose(e)} centered className='recipe-modal'>
         <Modal.Header closeButton>
@@ -35,8 +36,11 @@ class RecipeModal extends React.Component {
           <button><a className='instructions-text' href={this.props.recipe.url} target='blank'>Instructions</a></button>
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={(e, recipe) => this.handleClick(e, this.props.recipe)}>
-            Save Recipe
+          <button onClick={(e, recipe) => this.handleClick(e, this.props.recipe, 'favorite')}>
+            Favorite Recipe
+          </button>
+          <button onClick={(e, recipe) => this.handleClick(e, this.props.recipe, 'future')}>
+            Add to Wishlist
           </button>
         </Modal.Footer>
       </Modal>
