@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 const path = require("path");
 const bodyParser = require("body-parser").json();
 const router = require("./routes");
@@ -12,6 +12,9 @@ app.use(morgan("dev"));
 
 app.use("/", router);
 
+if (process.env.NODE_ENV === "production") {
+}
+
 app.listen(port, () =>
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Example app listening at http://localhost:${PORT}`)
 );
