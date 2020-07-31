@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/index.js",
-    "build-dev": "webpack --watch"
+    "start": "node server/index.js",
+    "install-app": "npm install",
+    "heroku-postbuild": "npm install-app && npm build-prod",
+    "build-dev": "webpack --watch",
+    "build-prod": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.26",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
