@@ -30,6 +30,7 @@ class App extends React.Component {
             <text onClick={e=> this.handleClick(e, 'favorites')}>Tried and True</text>
             <text onClick={e=> this.handleClick(e, 'future')}>Need to Try</text>
             <text onClick={e=> this.handleClick(e, 'search')}>Explore</text>
+            <text onClick={e=> this.handleClick(e, 'groceries')}>Grocery List</text>
           </span>
         </div>
         {this.state.view === 'home' || this.state.view === 'search' ? <SearchRecipes /> : (this.state.view === 'favorites' ? <Favorites /> : <Future />)}
