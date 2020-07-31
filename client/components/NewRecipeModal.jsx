@@ -12,7 +12,7 @@ class NewRecipeModal extends React.Component {
       healthLabels: [],
       image: '',
       ingredientLines: [],
-      label: 'New Recipe'
+      label: ''
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -35,7 +35,23 @@ class NewRecipeModal extends React.Component {
           {this.state.label}
         </Modal.Header>
         <Modal.Body>
-          Recipe Form goes here
+          <Form>
+            <Form.Group controlId="formRecipe">
+              <Form.Label>Recipe Title</Form.Label>
+              <Form.Control type="text" value={this.state.label} name='label' onChange={e => this.handleChange(e)}/>
+              <Form.Group controlId='formIngredients'>
+                <Form.Label>Ingredients</Form.Label>
+                <Form.Control as="textarea" value={this.state.ingredientLines} name='ingredientLines' onChange={e => this.handleChange(e)}/>
+              </Form.Group>
+              <Form.Group controlId='formInstructions'>
+                <Form.Label>Instructions</Form.Label>
+                <Form.Control as="textarea" value={this.state.url} name='url' onChange={e => this.handleChange(e)}/>
+              </Form.Group>
+              <Form.Label>Dietary Restrictions</Form.Label>
+              <Form.Control type="text" value={this.state.healthLabels} name='healthLabels' onChange={e => this.handleChange(e)}/>
+              <Form.File label='Upload a picture of the dish' value={this.state.image} name='image' onChange={e => this.handleChange(e)}/>
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <button onClick={(e) => this.handleClick(e, this.state, 'favorite')}>

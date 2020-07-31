@@ -20,7 +20,6 @@ class RecipeModal extends React.Component {
   };
 
   render() {
-    console.log(this.props.recipe);
     return (
       <Modal show={this.props.show} onHide={e => this.props.handleClose(e)} centered className='recipe-modal'>
         <Modal.Header closeButton>
