@@ -1,10 +1,9 @@
 import React from 'react';
-import { getRecipes } from '../../api/helpers';
 import Form from 'react-bootstrap/Form';
-import RecipeModal from './RecipeModal';
+import axios from 'axios';
 import RecipeItem from './RecipeItem';
 
-class SearchRecipes extends React.Component {
+class Future extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +17,17 @@ class SearchRecipes extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
-  //data.hits = [recipes]
+  
+  componentDidMount() {
+    axios.get('/cookbook', {params: {category: 'future'}}) 
+      .then(({ data }) => {
+        this.setState({
+          recipes: data
+        })
+      })
+      .catch(err => console.error(err));
+  }
+
   handleSearch(e) {
     this.setState({
       search: e.target.value
@@ -26,14 +35,6 @@ class SearchRecipes extends React.Component {
   }
 
   handleClick(e) {
-    e.preventDefault();
-    getRecipes(this.state.search, this.state.filters)
-      .then((results) => {
-        this.setState({
-          recipes: results.data.hits
-        }, () => console.log(this.state.recipes))
-      })
-      .catch(err => console.error(err));
   }
 
   handleChange(e) {
@@ -65,28 +66,20 @@ class SearchRecipes extends React.Component {
   render() {
     return (
       <div className='search-container'>
-        <Form>
+        <h3>'Need to Try' Recipes</h3>
+        {/* <Form>
           <Form.Group controlId="formSearch">
             <Form.Control className='search-bar' type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
             <button id='search-button' onClick={e => this.handleClick(e)}>Search</button>
             <br/>
-            {['balanced', 'high-protein', 'low-fat', 'low-carb', 'sugar-conscious', 'tree-nut-free', 'alcohol-free', 'peanut-free', 'vegan', 'vegetarian'].map(type => {
-              return <span className='dietary-restriction-option'><input type='checkbox'
-                id={type}
-                name={type}
-                value={type}
-                onChange={this.handleChange}
-              /><label className='dietary-restriction-label'>{type}</label></span>
-            })}
           </Form.Group>
-        
-        </Form>
+        </Form> */}
         <div className='recipe-list-container'>
           {this.state.recipes.length > 0 ? 
               this.state.recipes.map((item, i) => {
-                return <RecipeItem recipe={item.recipe} onClick={this.toggleModal}/> 
+                return <RecipeItem recipe={item} onClick={this.toggleModal}/> 
               })
-          : null}
+          : <span>Explore delicious recipes!</span>}
         </div> 
         {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
       </div>
@@ -94,4 +87,4 @@ class SearchRecipes extends React.Component {
   }
 }
 
-export default SearchRecipes;
+export default Future;
