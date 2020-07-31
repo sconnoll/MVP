@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {"node": "12.17.0"},
   "scripts": {
     "start": "npm install && node server/index.js",
     "heroku-postbuild": "npm run build-prod",
