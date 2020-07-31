@@ -13,7 +13,7 @@ const RecipeItem = ({ recipe, onClick }) => {
             return <><span key={i}>*{label}</span><br/></>
           }) : null}
         </Card.Text>
-        <button value={recipe} onClick={(e, value) => onClick(e, recipe)}>Ingredients</button>
+        <button id='ingredients-button' value={recipe} onClick={(e, value) => onClick(e, recipe)}>Ingredients</button>
         <button><a className='instructions-text' href={recipe.url} target='blank'>View Full Recipe</a></button>
       </Card.Body>
     </Card>

@@ -1,7 +1,7 @@
 import React from 'react';
-import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import RecipeItem from './RecipeItem';
+import RecipeModal from './RecipeModal';
 
 class Future extends React.Component {
   constructor(props) {
@@ -9,7 +9,6 @@ class Future extends React.Component {
     this.state = {
       recipes: [],
       search: '',
-      filters: [],
       showModal: false, 
       currentRecipe: null
     }
@@ -19,7 +18,7 @@ class Future extends React.Component {
   }
   
   componentDidMount() {
-    axios.get('/cookbook', {params: {category: 'future'}}) 
+    axios.get('/cookbook/future') 
       .then(({ data }) => {
         this.setState({
           recipes: data
@@ -32,9 +31,6 @@ class Future extends React.Component {
     this.setState({
       search: e.target.value
     })
-  }
-
-  handleClick(e) {
   }
 
   handleChange(e) {
@@ -67,13 +63,6 @@ class Future extends React.Component {
     return (
       <div className='search-container'>
         <h3>'Need to Try' Recipes</h3>
-        {/* <Form>
-          <Form.Group controlId="formSearch">
-            <Form.Control className='search-bar' type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
-            <button id='search-button' onClick={e => this.handleClick(e)}>Search</button>
-            <br/>
-          </Form.Group>
-        </Form> */}
         <div className='recipe-list-container'>
           {this.state.recipes.length > 0 ? 
               this.state.recipes.map((item, i) => {

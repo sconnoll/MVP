@@ -14,7 +14,6 @@ class App extends React.Component {
   }
 
   handleClick(e, screen) {
-    console.log('clicked, view', screen);
     this.setState ({
       view: screen
     })
@@ -33,7 +32,7 @@ class App extends React.Component {
             <text onClick={e=> this.handleClick(e, 'groceries')}>Grocery List</text>
           </span>
         </div>
-        {this.state.view === 'home' || this.state.view === 'search' ? <SearchRecipes /> : (this.state.view === 'favorites' ? <Favorites /> : <Future />)}
+        {this.state.view === 'home' ? <div><SearchRecipes /><br></br><Favorites /></div> : (this.state.view === 'search' ? <SearchRecipes /> : (this.state.view === 'favorites' ? <Favorites /> : <Future />))}
       </div>
     );
   }

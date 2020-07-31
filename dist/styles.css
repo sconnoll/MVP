@@ -24,6 +24,7 @@ body {
 button {
   display: inline-block;
   border: 1px solid #525252;
+  color: #525252;
   padding: 10px;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -32,12 +33,11 @@ button {
 .nav{
   grid-area: a;
   display: grid;
-  grid-template-columns: 7;
+  grid-template-columns: 2;
   align-self: start;
-  height: 50px;
-  background-color: #525252;
-  /* justify-items: end;
-  align-items: center; */
+  height: 70px;
+  max-width: 900px;
+  background-color: #164266;
   margin-bottom: 30px;
 }
 
@@ -46,13 +46,14 @@ a, a:hover{
 }
 
 .nav > .nav-bar {
-  grid-column: 7;
+  grid-column: 2;
   align-self: center;
-  justify-content: center; 
+  justify-self: end; 
 }
 
 .nav > .logo {
   grid-column: 1;
+  align-self: center;
   font-size: 28px;
   text-transform: uppercase;
   color: white;
@@ -87,6 +88,12 @@ a, a:hover{
 
 #search-button{
   float: right;
+  padding-left: 50px;
+  padding-right: 50px; 
+}
+
+#ingredients-button {
+  margin-left: 10px;
 }
 
 .recipe-list-container {
