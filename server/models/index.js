@@ -4,7 +4,7 @@ module.exports = {
   readRecipes: function (category) {
     console.log("category getting to db", category);
     return Recipe.find({ category: `${category}` })
-      .sort("-createdAt")
+      .sort("-created_at")
       .exec();
   },
 
