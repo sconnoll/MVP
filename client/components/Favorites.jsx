@@ -81,7 +81,7 @@ class Favorites extends React.Component {
         </div> 
         {this.state.showIngredientModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showIngredientModal} recipe={this.state.currentRecipe}/> : null}
         {this.state.showNewModal === true ? <NewRecipeModal show={this.state.showNewModal} onClick={this.handleClick}/> : null}
-        <br/><div className='footer'><span>Have your own favorite recipe? <button onClick={this.handleClick}>Create Recipe</button></span></div>
+        <br/><div className='nav'><span className='footer'>Have your own favorite recipe? <button onClick={this.handleClick}>Add it now!</button></span><small className='copyright'>Shannon Connolly</small></div>
       </div>
     );
   }
