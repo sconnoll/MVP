@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "install-app": "npm install",
-    "heroku-postbuild": "npm install-app && npm build-prod",
+    "heroku-postbuild": "npm install && npm run build-prod",
     "build-dev": "webpack --watch",
     "build-prod": "webpack -p"
   },
