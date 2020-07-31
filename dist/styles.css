@@ -35,10 +35,15 @@ button {
   display: grid;
   grid-template-columns: 2;
   align-self: start;
-  height: 70px;
+  height: 100px;
   max-width: 900px;
   background-color: #164266;
   margin-bottom: 30px;
+}
+
+.nav > .sign-in {
+  padding-top: 80px;
+  width: 300px;
 }
 
 a, a:hover{
@@ -59,6 +64,22 @@ a, a:hover{
   color: white;
   padding-left: 10px;
   padding-top: 5px;
+}
+
+.nav > .footer {
+  grid-column:1;
+  align-self: center;
+  padding-left: 10px;
+  color: white;
+}
+
+.nav > .copyright {
+  grid-column: 2;
+  align-self: end;
+  justify-self: end;
+  padding-right: 10px;
+  color: white;
+  font-size: 11px;
 }
 
 .nav > .nav-bar >text {
@@ -90,6 +111,10 @@ a, a:hover{
   float: right;
   padding-left: 50px;
   padding-right: 50px; 
+}
+
+#sign-in-button{
+  margin-top: 40px;
 }
 
 #ingredients-button {
