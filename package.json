@@ -7,7 +7,7 @@
     "start": "node server/index.js",
     "install-app": "npm install",
     "heroku-postbuild": "npm install-app && npm build-prod",
-    "build-dev": "webpack --watch", 
+    "build-dev": "webpack --watch",
     "build-prod": "webpack -p"
   },
   "repository": {
