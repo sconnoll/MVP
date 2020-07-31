@@ -61,7 +61,7 @@ class SearchRecipes extends React.Component {
       <div className='search-container'>
         <Form>
           <Form.Group controlId="formSearch">
-            <Form.Control className='search-bar' type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
+            <Form.Control className='search-bar' type="search" placeholder="Explore New Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
             <button id='search-button' onClick={e => this.handleClick(e)}>Search</button>
             <br/>
             {['balanced', 'high-protein', 'low-fat', 'low-carb', 'sugar-conscious', 'tree-nut-free', 'alcohol-free', 'peanut-free', 'vegan', 'vegetarian'].map(type => {
@@ -83,7 +83,6 @@ class SearchRecipes extends React.Component {
           : null}
         </div>
         {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
-        <div className='footer'><span>Have your own favorite recipe? <button>Create Recipe</button></span></div>
       </div>
     );
   }

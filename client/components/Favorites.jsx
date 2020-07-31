@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import RecipeItem from './RecipeItem';
 import RecipeModal from './RecipeModal';
+import NewRecipeModal from './NewRecipeModal';
 
 class Favorites extends React.Component {
   constructor(props) {
@@ -10,12 +10,14 @@ class Favorites extends React.Component {
     this.state = {
       recipes: [],
       search: '',
-      showModal: false, 
+      showIngredientModal: false, 
+      showNewModal: false,
       currentRecipe: null
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   
   componentDidMount() {
@@ -35,6 +37,9 @@ class Favorites extends React.Component {
   }
 
   handleClick(e) {
+    this.setState({
+      showNewModal: !this.state.showNewModal
+    })
   }
 
   handleChange(e) {
@@ -50,15 +55,15 @@ class Favorites extends React.Component {
   }
 
   toggleModal(e, recipe = null) {
-    let tempModal = this.state.showModal;
+    let tempModal = this.state.showIngredientModal;
     if (e !==undefined) {
       this.setState({
-        showModal: !tempModal, 
+        showIngredientModal: !tempModal, 
         currentRecipe: recipe
       })
     } else {
     this.setState({
-      showModal: !tempModal
+      showIngredientModal: !tempModal
     })
   }
   }
@@ -67,13 +72,6 @@ class Favorites extends React.Component {
     return (
       <div className='search-container'>
         <h3>'Tried and True' Recipes</h3>
-        {/* <Form>
-          <Form.Group controlId="formSearch">
-            <Form.Control className='search-bar' type="search" placeholder="Search Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
-            <button id='search-button' onClick={e => this.handleClick(e)}>Search</button>
-            <br/>
-          </Form.Group>
-        </Form> */}
         <div className='recipe-list-container'>
           {this.state.recipes.length > 0 ? 
               this.state.recipes.map((item, i) => {
@@ -81,8 +79,9 @@ class Favorites extends React.Component {
               })
           : <span>You have no favorite recipes</span>}
         </div> 
-        {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
-        <br/><div className='footer'><span>Have your own favorite recipe? <button>Create Recipe</button></span></div>
+        {this.state.showIngredientModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showIngredientModal} recipe={this.state.currentRecipe}/> : null}
+        {this.state.showNewModal === true ? <NewRecipeModal show={this.state.showNewModal} onClick={this.handleClick}/> : null}
+        <br/><div className='footer'><span>Have your own favorite recipe? <button onClick={this.handleClick}>Create Recipe</button></span></div>
       </div>
     );
   }
