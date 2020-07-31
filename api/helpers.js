@@ -1,8 +1,8 @@
 const axios = require("axios");
-const config = require("../config");
+// const config = require("../config");
 
-const EDAMAM_APP_ID = process.env.EDAMAM_APP_ID || config.EDAMAM_APP_ID;
-const EDAMAM_APP_KEY = process.env.EDAMAM_APP_KEY || config.EDAMAM_APP_KEY;
+const EDAMAM_APP_ID = process.env.EDAMAM_APP_ID;
+const EDAMAM_APP_KEY = process.env.EDAMAM_APP_KEY;
 
 const unsplashUrl = `https://api.unsplash.com/developers/?&food`;
 module.exports = {
