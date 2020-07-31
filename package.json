@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
-    "heroku-postbuild": "npm install && npm run build-prod",
+    "start": "npm install && node server/index.js",
+    "heroku-postbuild": "npm run build-prod",
     "build-dev": "webpack --watch",
     "build-prod": "webpack -p"
   },
