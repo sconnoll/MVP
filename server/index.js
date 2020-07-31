@@ -15,6 +15,6 @@ app.use("/", router);
 if (process.env.NODE_ENV === "production") {
 }
 
-app.listen(port, () =>
+app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
 );
