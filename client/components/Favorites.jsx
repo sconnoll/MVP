@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import RecipeItem from './RecipeItem';
+import RecipeModal from './RecipeModal';
 
 class Favorites extends React.Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class Favorites extends React.Component {
     this.state = {
       recipes: [],
       search: '',
-      filters: [],
       showModal: false, 
       currentRecipe: null
     }
@@ -23,7 +23,7 @@ class Favorites extends React.Component {
       .then(({ data }) => {
         this.setState({
           recipes: data
-        }, () => console.log(this.state.recipes))
+        })
       })
       .catch(err => console.error(err));
   }
@@ -82,6 +82,7 @@ class Favorites extends React.Component {
           : <span>You have no favorite recipes</span>}
         </div> 
         {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
+        <br/><div className='footer'><span>Have your own favorite recipe? <button>Create Recipe</button></span></div>
       </div>
     );
   }

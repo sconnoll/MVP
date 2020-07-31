@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import RecipeItem from './RecipeItem';
+import RecipeModal from './RecipeModal';
 
 class Future extends React.Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class Future extends React.Component {
     this.state = {
       recipes: [],
       search: '',
-      filters: [],
       showModal: false, 
       currentRecipe: null
     }
@@ -19,7 +19,7 @@ class Future extends React.Component {
   }
   
   componentDidMount() {
-    axios.get('/cookbook', {params: {category: 'future'}}) 
+    axios.get('/cookbook/future') 
       .then(({ data }) => {
         this.setState({
           recipes: data
@@ -32,9 +32,6 @@ class Future extends React.Component {
     this.setState({
       search: e.target.value
     })
-  }
-
-  handleClick(e) {
   }
 
   handleChange(e) {
