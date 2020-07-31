@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
+const { json } = require("body-parser");
 
 config = {
   mode: "development",
@@ -28,6 +29,12 @@ config = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
+  // plugins: [
+  //   new webpack.DefinePlugin({
+  //     NODE_ENV: json.stringify(process.env.NODE_ENV),
+
+  //   })
+  // ]
 };
 
 module.exports = config;

@@ -3,6 +3,7 @@ import { getRecipes } from '../../api/helpers';
 import Form from 'react-bootstrap/Form';
 import RecipeModal from './RecipeModal';
 import RecipeItem from './RecipeItem';
+import axios from 'axios';
 
 class SearchRecipes extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class SearchRecipes extends React.Component {
     this.state = {
       recipes: [],
       search: '',
-      filter: '',
+      filter: null,
       showModal: false, 
       currentRecipe: null
     }
@@ -27,10 +28,11 @@ class SearchRecipes extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    getRecipes(this.state.search, this.state.filter)
-      .then((results) => {
+    axios.get(`/search/${this.state.search}&${this.state.filter}`)
+      .then(({ data }) => {
+        console.log('coming back to client?', data);
         this.setState({
-          recipes: results.data.hits
+          recipes: data
         })
       })
       .catch(err => console.error(err));
@@ -64,7 +66,7 @@ class SearchRecipes extends React.Component {
             <Form.Control className='search-bar' type="search" placeholder="Explore New Recipes" value={this.state.search} name='search' onChange={e => this.handleSearch(e)}/>
             <button id='search-button' onClick={e => this.handleClick(e)}>Search</button>
             <br/>
-            {['balanced', 'high-protein', 'low-fat', 'low-carb', 'sugar-conscious', 'tree-nut-free', 'alcohol-free', 'peanut-free', 'vegan', 'vegetarian'].map(type => {
+            {['sugar-conscious', 'tree-nut-free', 'alcohol-free', 'peanut-free', 'vegan', 'vegetarian'].map(type => {
               return <span className='dietary-restriction-option'><input type='checkbox'
                 id={type}
                 name={type}

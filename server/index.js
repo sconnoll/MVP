@@ -2,20 +2,16 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const path = require("path");
-const bodyParser = require("body-parser").json();
+const bodyParser = require("body-parser");
 const router = require("./routes");
 const morgan = require("morgan");
 const cors = require("cors");
 
 app.use(express.static("dist"));
-app.use(bodyParser);
+app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 app.use("/", router);
-
-if (process.env.NODE_ENV === "production") {
-}
-
 app.use(cors());
 
 app.listen(PORT, () =>

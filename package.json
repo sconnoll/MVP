@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {"node": "12.17.0"},
+
   "scripts": {
-    "start": "npm install && node server/index.js",
+    "start": "nodemon server/index.js",
+    "start-heroku": "npm install && node server/index.js",
     "heroku-postbuild": "npm run build-prod",
     "build-dev": "webpack --watch",
     "build-prod": "webpack -p"
