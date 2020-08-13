@@ -2,26 +2,23 @@ import React from 'react';
 import axios from 'axios';
 import RecipeItem from './RecipeItem';
 import RecipeModal from './RecipeModal';
-import NewRecipeModal from './NewRecipeModal';
 
-class Favorites extends React.Component {
+class Future extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       recipes: [],
       search: '',
-      showIngredientModal: false, 
-      showNewModal: false,
+      showModal: false, 
       currentRecipe: null
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
   
   componentDidMount() {
-    axios.get('/cookbook/favorite') 
+    axios.get('/cookbook/future') 
       .then(({ data }) => {
         this.setState({
           recipes: data
@@ -33,12 +30,6 @@ class Favorites extends React.Component {
   handleSearch(e) {
     this.setState({
       search: e.target.value
-    })
-  }
-
-  handleClick(e) {
-    this.setState({
-      showNewModal: !this.state.showNewModal
     })
   }
 
@@ -55,15 +46,15 @@ class Favorites extends React.Component {
   }
 
   toggleModal(e, recipe = null) {
-    let tempModal = this.state.showIngredientModal;
+    let tempModal = this.state.showModal;
     if (e !==undefined) {
       this.setState({
-        showIngredientModal: !tempModal, 
+        showModal: !tempModal, 
         currentRecipe: recipe
       })
     } else {
     this.setState({
-      showIngredientModal: !tempModal
+      showModal: !tempModal
     })
   }
   }
@@ -71,20 +62,18 @@ class Favorites extends React.Component {
   render() {
     return (
       <div className='search-container'>
-        <h3>'Tried and True' Recipes</h3>
+        <h3>'Need to Try' Recipes</h3>
         <div className='recipe-list-container'>
           {this.state.recipes.length > 0 ? 
               this.state.recipes.map((item, i) => {
                 return <RecipeItem recipe={item} onClick={this.toggleModal}/> 
               })
-          : <span>You have no favorite recipes</span>}
+          : <span>Explore delicious recipes!</span>}
         </div> 
-        {this.state.showIngredientModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showIngredientModal} recipe={this.state.currentRecipe}/> : null}
-        {this.state.showNewModal === true ? <NewRecipeModal show={this.state.showNewModal} onClick={this.handleClick}/> : null}
-        <br/><div className='nav'><span className='footer'>Have your own favorite recipe? <button onClick={this.handleClick}>Add it now!</button></span><small className='copyright'>Shannon Connolly</small></div>
+        {this.state.showModal === true ? <RecipeModal handleClose={this.toggleModal} show={this.state.showModal} recipe={this.state.currentRecipe}/> : null}
       </div>
     );
   }
 }
 
-export default Favorites;
+export default Future;
