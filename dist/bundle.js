@@ -86,17 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./api/config.js":
-/*!***********************!*\
-  !*** ./api/config.js ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = {\n  UNSPLASH_TOKEN: \"ynbN4W2s866wVYGvRZMrUWCCxKY3qxXA1SUKuMiWqrM\",\n  SECRET_UNSPLASH_TOKEN: \"a2GiVoP8EwdbjYXjfnh-GYOXWsIpY4ie2bgs4LRfUEA\",\n  EDAMAM_APP_ID: \"d1ca305a\",\n  EDAMAM_APP_KEY: \"ab1e515b254c45250a164fd1a389df20\"\n};\n\n//# sourceURL=webpack:///./api/config.js?");
-
-/***/ }),
-
 /***/ "./api/helpers.js":
 /*!************************!*\
   !*** ./api/helpers.js ***!
@@ -104,7 +93,7 @@ eval("module.exports = {\n  UNSPLASH_TOKEN: \"ynbN4W2s866wVYGvRZMrUWCCxKY3qxXA1S
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _require = __webpack_require__(/*! ./config */ \"./api/config.js\"),\n    UNSPLASH_TOKEN = _require.UNSPLASH_TOKEN,\n    EDAMAM_APP_ID = _require.EDAMAM_APP_ID,\n    EDAMAM_APP_KEY = _require.EDAMAM_APP_KEY;\n\nvar unsplashUrl = \"https://api.unsplash.com/developers/?&food\";\nmodule.exports = {\n  // getDailyPicture: function () {\n  //   return axios.get(unsplashUrl);\n  // },\n  getRecipes: function getRecipes(searchTerm) {\n    // console.log(...filters.length);\n    // if (filters) {\n    //   return axios.get(\n    //     `https://api.edamam.com/search?q=${searchTerm}&app_id=${EDAMAM_APP_ID}&app_key=${EDAMAM_APP_KEY}&from=0&to=30&health=${filters}`\n    //   );\n    // }\n    return axios.get(\"https://api.edamam.com/search?q=\".concat(searchTerm, \"&app_id=\").concat(EDAMAM_APP_ID, \"&app_key=\").concat(EDAMAM_APP_KEY, \"&from=0&to=30\"));\n  }\n};\n\n//# sourceURL=webpack:///./api/helpers.js?");
+eval("var axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _require = __webpack_require__(!(function webpackMissingModule() { var e = new Error(\"Cannot find module './config'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),\n    UNSPLASH_TOKEN = _require.UNSPLASH_TOKEN,\n    EDAMAM_APP_ID = _require.EDAMAM_APP_ID,\n    EDAMAM_APP_KEY = _require.EDAMAM_APP_KEY;\n\nvar unsplashUrl = \"https://api.unsplash.com/developers/?&food\";\nmodule.exports = {\n  // getDailyPicture: function () {\n  //   return axios.get(unsplashUrl);\n  // },\n  getRecipes: function getRecipes(searchTerm) {\n    // console.log(...filters.length);\n    // if (filters) {\n    //   return axios.get(\n    //     `https://api.edamam.com/search?q=${searchTerm}&app_id=${EDAMAM_APP_ID}&app_key=${EDAMAM_APP_KEY}&from=0&to=30&health=${filters}`\n    //   );\n    // }\n    return axios.get(\"https://api.edamam.com/search?q=\".concat(searchTerm, \"&app_id=\").concat(EDAMAM_APP_ID, \"&app_key=\").concat(EDAMAM_APP_KEY, \"&from=0&to=30\"));\n  }\n};\n\n//# sourceURL=webpack:///./api/helpers.js?");
 
 /***/ }),
 
