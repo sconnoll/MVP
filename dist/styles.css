@@ -30,7 +30,7 @@ button {
   cursor: pointer;
 }
 
-.nav{
+nav{
   grid-area: a;
   display: grid;
   grid-template-columns: 2;
@@ -41,7 +41,7 @@ button {
   margin-bottom: 30px;
 }
 
-.nav > .sign-in {
+nav > .sign-in {
   padding-top: 80px;
   width: 300px;
 }
@@ -50,13 +50,13 @@ a, a:hover{
   text-decoration: none;
 }
 
-.nav > .nav-bar {
+nav > .nav-bar {
   grid-column: 2;
   align-self: center;
   justify-self: end; 
 }
 
-.nav > .logo {
+nav > .logo {
   grid-column: 1;
   align-self: center;
   font-size: 28px;
@@ -66,14 +66,14 @@ a, a:hover{
   padding-top: 5px;
 }
 
-.nav > .footer {
+nav > .footer {
   grid-column:1;
   align-self: center;
   padding-left: 10px;
   color: white;
 }
 
-.nav > .copyright {
+nav > .copyright {
   grid-column: 2;
   align-self: end;
   justify-self: end;
@@ -82,12 +82,13 @@ a, a:hover{
   font-size: 11px;
 }
 
-.nav > .nav-bar >text {
+nav > .nav-bar > li {
+  display: inline;
   color: white;
   padding: 0px 10px;
 }
 
-.nav > .nav-bar > text:hover {
+nav > .nav-bar > li:hover {
   color: lightgray;
   cursor: pointer;
 }
