@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import SearchRecipes from './components/SearchRecipes';
 import Favorites from './components/Favorites';
@@ -11,6 +11,24 @@ import {
 } from "react-router-dom"; 
 
 const App = (props) => {
+  
+  useEffect(() => {
+    gapi.load('auth2', () => {
+      gapi.auth2.init({
+        client_id: `${CLIENT_ID}.apps.googleusercontent.com`
+      })
+      gapi.load('signin2', () => {
+        const params = {
+          longtitle: true,
+          onsuccess: () => {
+            console.log('user has finished signing in!');
+          }
+        }
+        gapi.signin2.render('loginDiv', params);
+      })
+    })
+  })
+
   return (
     <Router>
       <div className='app-container'>
