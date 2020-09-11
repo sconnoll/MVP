@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import SearchRecipes from './components/SearchRecipes';
 import Favorites from './components/Favorites';
 import Future from './components/Future';
+import {CLIENT_ID} from '../config';
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,6 +36,7 @@ const App = (props) => {
         <nav>
           <span className='logo'><text>My Cookbook</text></span>
           <ul className='nav-bar'>
+            <div id="loginDiv" className="g-signin2">Sign in</div>
             <li>
               <Link to="/">Home</Link>
             </li>

@@ -3,4 +3,5 @@ module.exports = {
   SECRET_UNSPLASH_TOKEN: "a2GiVoP8EwdbjYXjfnh-GYOXWsIpY4ie2bgs4LRfUEA",
   EDAMAM_APP_ID: "d1ca305a",
   EDAMAM_APP_KEY: "ab1e515b254c45250a164fd1a389df20",
+  CLIENT_ID: "137755116940-ht02uagar3ihf08kd1j76u1lirjska2m",
 };
