@@ -8,7 +8,6 @@ const RecipeItem = ({ recipe, onClick }) => {
       <Card.Body>
         <Card.Title className='all-caps'>{recipe.label}</Card.Title>
         <Card.Text>
-          Yields {recipe.yield} Servings<br/>
           {recipe.healthLabels ? recipe.healthLabels.map((label, i) => {
             return <><span key={i}>*{label}</span><br/></>
           }) : null}

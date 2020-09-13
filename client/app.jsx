@@ -33,12 +33,12 @@ const App = (props) => {
   return (
     <Router>
       <div className='app-container'>
+        <div id="loginDiv" className="g-signin2">Sign in</div>
         <nav>
           <span className='logo'><text>My Cookbook</text></span>
           <ul className='nav-bar'>
-            <div id="loginDiv" className="g-signin2">Sign in</div>
             <li>
-              <Link to="/">Home</Link>
+              <Link style={{textDecoration: 'none', color: 'white'}} to="/">Home</Link>
             </li>
             <li>
               <Link to="/tried_and_true">Tried and True</Link>

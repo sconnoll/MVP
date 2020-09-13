@@ -11,7 +11,8 @@ class RecipeModal extends React.Component {
   }
 
   handleClick(event, recipe, category) {
-    const { dietLabels, healthLabels, image, ingredientLines, label, url } = recipe
+    console.log('this is the recipe object', recipe)
+    const { dietLabels, healthLabels, image, ingredientLines, label, url} = recipe
     axios.post('/cookbook', {category, dietLabels, healthLabels, image, ingredientLines, label, url})
       .then(result => {
         console.log('completed');

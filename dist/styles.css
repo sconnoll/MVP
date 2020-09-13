@@ -21,6 +21,12 @@ body {
   align-items: start;
 }
 
+#loginDiv {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 button {
   display: inline-block;
   border: 1px solid #525252;
@@ -88,7 +94,7 @@ nav > .nav-bar > li {
   padding: 0px 10px;
 }
 
-nav > .nav-bar > li:hover {
+nav > ul> li > Link:hover {
   color: lightgray;
   cursor: pointer;
 }
